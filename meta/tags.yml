@@ -1,13 +1,11 @@
 tags:
   - slug: document
-    name: document
+    name: Документ
   - slug: mock
-    name: mock
+    name: Проба пера
   - slug: style
-    name: style
+    name: Стиль
   - slug: license
-    name: license
-  - slug: mdx
-    name: mdx
+    name: Лицензия
   - slug: markdown
-    name: markdown
+    name: Тест редактора

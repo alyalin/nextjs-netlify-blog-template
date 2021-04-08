@@ -8,27 +8,27 @@ locale: 'ru'
 
 collections:
   - name: "config"
-    label: "Config"
+    label: "Настройки"
     delete: false
     editor:
       preview: false
     files:
       - name: "general"
-        label: "Site Config"
+        label: "Настройки сайта"
         file: "config.json"
-        description: "General site settings"
+        description: "Основные настройки сайта: ключевые слова, заголовки, аккаунты в соц. сетях"
         fields:
-          - label: "URL"
+          - label: "Адрес сайта"
             name: "base_url"
             widget: "string"
-            hint: "Do not enter the trailing slash of the URL"
-          - label: "Site title"
+            hint: "Не вводите / в конце адреса"
+          - label: "Заголовок сайта"
             name: "site_title"
             widget: "string"
-          - label: "Site description"
+          - label: "Описание сайта"
             name: "site_description"
             widget: "string"
-          - label: "Site keywords"
+          - label: "Ключевые слова"
             name: "site_keywords"
             widget: "list"
             summary: "{{fields.keyword.keyword}}"
@@ -36,61 +36,61 @@ collections:
               label: Keyword
               name: keyword
               widget: "string"
-          - label: "Twitter account"
+          - label: "Твиттер аккаунт"
             name: "twitter_account"
             widget: "string"
-          - label: "GitHub account"
+          - label: "Гитхаб аккаунт"
             name: "github_account"
             widget: "string"
 
   - name: "meta"
-    label: "Meta"
+    label: "Константы"
     delete: false
     editor:
       preview: false
     files:
       - name: "authors"
-        label: "Authors"
+        label: "Авторы"
         file: "meta/authors.yml"
-        description: "Author descriptions"
+        description: "Авторы и их описание"
         fields:
           - name: authors
-            label: Authors
-            label_singular: "Author"
+            label: Авторы
+            label_singular: "Автор"
             widget: list
             fields:
-              - label: "Slug"
+              - label: "Никнейм для URL-адреса"
                 name: "slug"
                 widget: "string"
-                hint: "The part of a URL identifies the author"
-              - label: "Name"
+                hint: "Только латиница. Будет отображаться в URL-адресе автора его личной страницы"
+              - label: "Имя автора"
                 name: "name"
                 widget: "string"
-                hint: "First and Last"
-              - label: "Introduction"
+                hint: "Имя и фамилия"
+              - label: "Описание, добавьте пару строк, о том чем он занимается"
                 name: "introduction"
                 widget: "text"
       - name: "tags"
-        label: "Tags"
+        label: "Теги"
         file: "meta/tags.yml"
-        description: "List of tags"
+        description: "Список тегов"
         fields:
           - name: tags
-            label: Tags
-            label_singular: "Tag"
+            label: Теги
+            label_singular: "Тег"
             widget: list
             fields:
-              - label: "Slug"
+              - label: "URL-адрес тега"
                 name: "slug"
                 widget: "string"
-                hint: "The part of a URL identifies the tag"
-              - label: "Display Name"
+                hint: "Только латиница. Будет частью URL-адреса страницы тега"
+              - label: "Имя для отображения"
                 name: "name"
                 widget: "string"
-                hint: "Tag name for displaying on the site"
+                hint: "Тут уже как-угодно. Будет отображаться в статьях или других материалах"
 
   - name: "posts"
-    label: "Posts"
+    label: "Записи в блоге"
     folder: "content/posts/"
     extension: "mdx"
     format: "frontmatter"
@@ -99,20 +99,20 @@ collections:
     identifier_field: slug
     summary: "{{title}}"
     fields:
-      - label: "Slug"
+      - label: "URL-адрес записи"
         name: "slug"
         widget: "string"
-      - label: "Title"
+      - label: "Заголовок"
         name: "title"
         widget: "string"
-      - label: "Publish Date"
+      - label: "Дата публикации"
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
       - label: Author
-        name: "author"
+        name: "Автор"
         widget: relation
         collection: "meta"
         file: "authors"
@@ -121,13 +121,13 @@ collections:
         displayFields:
           - "authors.*.name"
         valueField: "authors.*.slug"
-      - label: Tags
-        label_singular: "Tag"
+      - label: Теги
+        label_singular: "Тег"
         name: "tags"
         widget: list
         summary: "{{fields.tag}}"
         field:
-          label: Tag
+          label: Тег
           name: tag
           widget: relation
           collection: "meta"
@@ -137,6 +137,6 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - label: "Body"
+      - label: "Текст"
         name: "body"
         widget: "markdown"
