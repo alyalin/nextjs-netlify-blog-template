@@ -13,7 +13,7 @@ export default function Index() {
       <div className="container">
         <div>
           <h1>
-            Привет! Вы на главной!y<span className="fancy">.</span>
+            Привет! Вы на главной!
           </h1>
           <h2>Тестовая страничка главной этого сайта.</h2>
           <SocialList />
